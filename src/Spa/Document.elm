@@ -6,6 +6,8 @@ module Spa.Document exposing
 
 import Browser
 import Element exposing (..)
+import Element.Background as Background
+import Element.Font as Font
 
 
 type alias Document msg =
@@ -25,7 +27,18 @@ toBrowserDocument : Document msg -> Browser.Document msg
 toBrowserDocument doc =
     { title = doc.title
     , body =
-        [ Element.layout [ width fill, height fill ]
-            (column [ width fill, height fill ] doc.body)
+        [ Element.layout
+            [ Font.color (rgb 1 1 1)
+            , Font.family
+                [ Font.typeface "Montserrat"
+                , Font.sansSerif
+                ]
+            ]
+            (column
+                [ width (fill |> maximum 600)
+                , centerX
+                ]
+                doc.body
+            )
         ]
     }
