@@ -2,8 +2,7 @@ module Pages.Top exposing (Model, Msg, Params, page)
 
 import Element exposing (..)
 import Element.Background as Background
-import Element.Border as Border
-import Element.Font as Font exposing (center)
+import Element.Font as Font
 import Html
 import Html.Attributes
 import Spa.Document exposing (Document)
@@ -86,16 +85,13 @@ poolView pool =
         [ Background.color (rgb 0.8 0.8 0.8)
         , width fill
         , height (px 100)
-        , Border.rounded 10
         , Font.color (rgb 0 0 0)
-
-        -- , center
         ]
     <|
         column
-            [ padding 8, spacing 8 ]
-            [ el [] (text pool.ticker)
-            , el [] (idView pool.id)
+            [ padding 8, spacing 16, width fill, centerY ]
+            [ el [ Font.size (scaled 4), centerX ] (text pool.ticker)
+            , el [ centerX ] (idView pool.id)
             ]
 
 
@@ -104,6 +100,12 @@ idView id =
         Html.span
             [ Html.Attributes.style "overflow" "hidden"
             , Html.Attributes.style "text-overflow" "ellipsis"
-            , Html.Attributes.style "max-width" "300px"
+            , Html.Attributes.style "width" "70vw"
+            , Html.Attributes.style "max-width" "460px"
             ]
             [ Html.text id ]
+
+
+scaled : Int -> Int
+scaled factor =
+    Element.modular 16 1.25 factor |> round

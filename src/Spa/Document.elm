@@ -6,7 +6,6 @@ module Spa.Document exposing
 
 import Browser
 import Element exposing (..)
-import Element.Background as Background
 import Element.Font as Font
 
 
