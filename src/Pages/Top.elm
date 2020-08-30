@@ -76,7 +76,7 @@ join =
 pools =
     [ { ticker = "DSOE1", id = "084d2f15d6e057f4a077bf0dc154eb33516aa81c684acadbb879413c" }
     , { ticker = "DSOE2", id = "084d2f15d6e057f4a077bf0dc154eb33516aa81c684acadbb879413c" }
-    , { ticker = "DSOE3", id = "084d2f15d6e057f4a077bf0dc154eb33516aa81c684acadbb879413c" }
+    , { ticker = "DSOE3", id = "c314978bbdaca486c18aa61533be451cd0fb770a4f750e6d51f2d480" }
     ]
 
 
@@ -89,10 +89,20 @@ poolView pool =
         ]
     <|
         column
-            [ padding 8, spacing 16, width fill, centerY ]
+            [ spacing 12, width fill, centerY ]
             [ el [ Font.size (scaled 4), centerX ] (text pool.ticker)
-            , el [ centerX ] (idView pool.id)
+            , row [ spacing 12, centerX ]
+                [ el [] (idView pool.id)
+                , el [] (clipboardCopy pool.id)
+                ]
             ]
+
+
+clipboardCopy id =
+    Element.html <|
+        Html.node "clipboard-copy"
+            [ Html.Attributes.attribute "value" id ]
+            [ Html.button [] [ Html.text "copy" ] ]
 
 
 idView id =

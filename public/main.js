@@ -7,3 +7,11 @@ var app = Elm.Main.init({ flags: flags })
 
 // Ports go here
 // https://guide.elm-lang.org/interop/ports.html
+
+document.addEventListener('clipboard-copy', function (event) {
+    const orig = event.target.innerHTML
+    event.target.innerHTML = orig.replace(/\>.+\</, '>copied!<')
+    setTimeout(function () {
+        event.target.innerHTML = orig
+    }, 3000)
+})
