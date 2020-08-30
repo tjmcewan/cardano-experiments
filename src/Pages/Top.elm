@@ -1,11 +1,10 @@
-module Pages.Top exposing (Model, Msg, Params, page)
+port module Pages.Top exposing (Model, Msg, Params, page)
 
 import Element exposing (..)
 import Element.Background as Background
 import Element.Font as Font
 import Html
 import Html.Attributes
-import Html.Events
 import Process
 import Shared exposing (subscriptions, update)
 import Spa.Document exposing (Document)
@@ -64,8 +63,11 @@ delay time msg =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.none
+subscriptions _ =
+    copiedPoolId (\id -> Copied (Pool id))
+
+
+port copiedPoolId : (String -> msg) -> Sub msg
 
 
 
@@ -154,7 +156,7 @@ clipboardCopy model poolId =
     Element.html <|
         Html.node "clipboard-copy"
             [ Html.Attributes.attribute "value" poolId ]
-            [ Html.button [ Html.Events.onClick <| Copied (Pool poolId) ] [ Html.text label ] ]
+            [ Html.button [] [ Html.text label ] ]
 
 
 idView id =
