@@ -115,9 +115,9 @@ join =
 
 
 pools =
-    [ { ticker = "DSOE1", id = "084d2f15d6e057f4a077bf0dc154eb33516aa81c684acadbb879413c" }
-    , { ticker = "DSOE2", id = "184d2f15d6e057f4a077bf0dc154eb33516aa81c684acadbb879413c" }
-    , { ticker = "DSOE3", id = "c314978bbdaca486c18aa61533be451cd0fb770a4f750e6d51f2d480" }
+    [ { ticker = "KOALA", id = "9138b6f09e8e69c29fdee4e11b147b7ad351aab23fc73a9976907f10" }
+    , { ticker = "DOSE1", id = "a605cdf1d153ee387f848087ed38e938b6dbd3f64ec79300568e1187" }
+    , { ticker = "CDPP", id = "7c289f3d27f864c0dbff814c29a8dcc097eb135fa3159ed1d2927483" }
     ]
 
 
